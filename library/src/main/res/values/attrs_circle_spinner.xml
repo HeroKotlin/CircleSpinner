@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="CircleSpinner">
+        <attr name="circle_spinner_value" format="float"/>
+        <attr name="circle_spinner_color" format="color|reference"/>
+        <attr name="circle_spinner_radius" format="dimension|reference"/>
+        <attr name="circle_spinner_stroke_gap" format="dimension|reference"/>
+        <attr name="circle_spinner_stroke_width" format="dimension|reference"/>
+    </declare-styleable>
+</resources>
