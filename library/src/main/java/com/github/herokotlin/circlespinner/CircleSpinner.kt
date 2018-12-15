@@ -14,11 +14,11 @@ class CircleSpinner : View {
 
         var DEFAULT_COLOR = Color.parseColor("#BBFFFFFF")
 
-        var DEFAULT_RADIUS = 34
+        var DEFAULT_RADIUS = 20
 
-        var DEFAULT_STROKE_GAP = 2
+        var DEFAULT_STROKE_GAP = 1
 
-        var DEFAULT_STROKE_WIDTH = 2
+        var DEFAULT_STROKE_WIDTH = 1
 
     }
 
@@ -135,18 +135,19 @@ class CircleSpinner : View {
         paint.color = color
         paint.strokeWidth = strokeWidth.toFloat()
 
-        val centerX = width.toFloat() / 2
-        val centerY = height.toFloat() / 2
-        val centerRadius = width / 2 - strokeWidth
+        val centerX = radius.toFloat()
+        val centerY = radius.toFloat()
 
-        canvas.drawCircle(centerX, centerY, centerRadius.toFloat(), paint)
+        canvas.drawCircle(centerX, centerY, radius - strokeWidth / 2.toFloat(), paint)
 
         paint.style = Paint.Style.FILL
 
-        rect.left = centerX - centerRadius + strokeGap
-        rect.top = centerY - centerRadius + strokeGap
-        rect.right = centerX + centerRadius - strokeGap
-        rect.bottom = centerY + centerRadius - strokeGap
+        val centerRadius = radius - strokeWidth - strokeGap
+
+        rect.left = centerX - centerRadius
+        rect.top = centerY - centerRadius
+        rect.right = centerX + centerRadius
+        rect.bottom = centerY + centerRadius
 
         canvas.drawArc(rect, -90f, value * 360, true, paint)
 
